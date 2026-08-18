@@ -1,6 +1,8 @@
 class Solution {
 public:
     bool isIsomorphic(string s, string t) {
+        if(s.size() != t.size())
+        return false;
        unordered_map<char,char>mp1;
        unordered_map<char,char>mp2;
        for(int i=0;i<s.size();i++){
