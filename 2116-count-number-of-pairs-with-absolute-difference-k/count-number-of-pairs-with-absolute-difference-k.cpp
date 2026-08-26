@@ -6,7 +6,7 @@ public:
         for(int x:nums){
             if(x-k >=0)
              ans+=freq[x-k];
-            if(x+k <=100)
+            if(x+k <101)
               ans+=freq[x+k];
             freq[x]++;
         }
