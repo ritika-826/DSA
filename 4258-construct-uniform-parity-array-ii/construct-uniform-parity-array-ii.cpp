@@ -10,8 +10,9 @@ public:
             else{
                 min_odd=min(x,min_odd);
             }
-        }
+        }//saare even ya phir saare odd
         if(min_odd==INT_MAX || min_even==INT_MAX)return true;
+        //sabse chota odd toh sb shi
         if(min_odd<min_even)return true;
         else return false;
     }
