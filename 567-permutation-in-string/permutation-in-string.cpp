@@ -1,29 +1,34 @@
 class Solution {
-public:bool isFreqSame(int freq1[],int freq2[]){
-    for(int i=0;i<26;i++){
-    if(freq1[i]!=freq2[i]){
-    return false;}
+public:
+    bool isSame(int freq1[],int freq2[]){
+        for(int i=0;i<26;i++){
+        if(freq1[i]!=freq2[i])return false;}
+        return true;
     }
-  return true;
-}
     bool checkInclusion(string s1, string s2) {
-        int freq[26]={0};
-        for(int i=0;i<s1.length();i++){
-            freq[s1[i]-'a']++;
+        int n=s1.length();
+        int m=s2.length();
+        if(n>m)return false;
+        int freq1[26]={0};
+        int freq2[26]={0};
+        // s1 ki frequency
+        for(int i=0;i<n;i++){
+            freq1[s1[i]-'a']++;
         }
-        int winsize=s1.length();
-        for(int i=0;i<s2.length();i++){
-            int windidx=0,idx=i;
-            int windfreq[26]={0};
-            while(windidx<winsize && idx<s2.length()){
-                windfreq[s2[idx]-'a']++;
-                windidx++;idx++;
-            }
-            if(isFreqSame(freq,windfreq)){
-            return true;
+        // s2 ka first window
+        for(int i=0;i<n;i++){
+            freq2[s2[i]-'a']++;
         }
-    }
-        return false;
-        
+        if(isSame(freq1,freq2))return true;
+        //sliding window
+        for(int i=n;i<m;i++){
+            //new char add
+            freq2[s2[i]-'a']++;
+            //old cgar remove
+            freq2[s2[i-n]-'a']--;
+            if(isSame(freq1,freq2))return true;
+
+        }
+       return false;; 
     }
 };
